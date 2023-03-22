@@ -5,10 +5,10 @@ import 'react-quill/dist/quill.snow.css'
 
 // A demo for the user to enter their work experience
 const WorkExperience = () => {
-    
+
     const [text, setText] = useState(
-        '<p style="font-weight: bold;">Work&nbsp;Experience</p>'
-        )
+        '<p>Work&nbsp;Experience</p>'
+    )
 
     const handleChange = (value) => {
         setText(value)

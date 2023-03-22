@@ -7,7 +7,7 @@ import 'react-quill/dist/quill.snow.css'
 const Profile = () => {
 
     const [text, setText] = useState(
-        '<p style="font-weight: bold;">Name:</p><p style="font-weight: bold;">LinkedIn:</p><p style="font-weight: bold;">Portfolio:</p>'
+        '<p>Name:</p><p>LinkedIn:</p><p>Portfolio:</p>'
         )
 
     const handleChange = (value) => {

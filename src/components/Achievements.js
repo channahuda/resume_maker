@@ -7,7 +7,7 @@ import 'react-quill/dist/quill.snow.css';
 // i.e. add multiple headings inside a single textbox
 
 const Achievements = () => {
-    const [text, setText] = useState('<p style="font-weight: bold;">Achievements</p><br><p style="font-weight: bold;">Skills</p>');
+    const [text, setText] = useState('<p>Achievements</p><br><p>Skills</p>');
 
 
     const handleChange = (value) => {
