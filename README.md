@@ -1,3 +1,8 @@
+# About
+
+This project is about a website which allows user to create their resume. It comes with a drag feature so that the users can move the textboxes to their desired positions. It also has resize options as well as automatic resize. The user can also customize and edit the text boxes.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
