@@ -7,13 +7,25 @@ import PdfEventContext from '../context/PdfContext'
 
 const TextArea = ({ text, handleChange }) => {
 
+    // Global state variable which checks whether the button for generate pdf has been clicked
     const pdfEvent = useContext(PdfEventContext);
+
+    // state to show or hide the toolbar
     const [showToolbar, setShowToolbar] = useState(!pdfEvent)
+
+    //State to hide or show the show toolbar button
     const [showButton, setShowButton] = useState(!pdfEvent)
+
+    //State to show or hide the outline of the textfields
     const [showOutline, setShowOutline] = useState(!pdfEvent)
-    const [isDisabled, setIsDisabled] = useState(false)
+
+    // State for the draggable component, to manage if it's disabled or not
+    // const [isDisabled, setIsDisabled] = useState(false)
+
+    // State to hide or show resize handle
     const [resize, setResize] = useState('both')
 
+    // to re render components if any of the following state is changed
     useEffect(() => {
         if (pdfEvent) {
             setShowToolbar(false)
@@ -21,9 +33,11 @@ const TextArea = ({ text, handleChange }) => {
             setShowOutline(false)
             setResize('none')
         }
-    }, [pdfEvent, setShowToolbar, setShowButton, setShowOutline, setIsDisabled, setResize])
+    }, [pdfEvent, setShowToolbar, setShowButton, setShowOutline, setResize])
 
     const modules = {
+
+        // toolbar for react quill
         toolbar: [
             [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
             [{ size: [] }],
@@ -37,6 +51,7 @@ const TextArea = ({ text, handleChange }) => {
 
     }
 
+    // input formats for react quill
     const formats = [
         'header', 'font', 'size',
         'bold', 'italic', 'underline', 'strike', 'blockquote',
@@ -54,13 +69,15 @@ const TextArea = ({ text, handleChange }) => {
         }
     });
 
-    const handleFocus = () => {
-        setIsDisabled(true)
-    }
+    // // drag is diabled when the user is typing
+    // const handleFocus = () => {
+    //     setIsDisabled(true)
+    // }
 
-    const handleBlur = () => {
-        setIsDisabled(false)
-    }
+    // // drag is enabled again when the user is not typing
+    // const handleBlur = () => {
+    //     setIsDisabled(false)
+    // }
 
 
     const handleDrag = (e, ui) => {
@@ -79,7 +96,7 @@ const TextArea = ({ text, handleChange }) => {
     return (
         <div style={{ position: 'relative' }}>
             <Draggable
-                disabled={isDisabled}
+                //  disabled={isDisabled}
                 {...handleDrag}>
                 <div style={{ padding: '2px', cursor: 'move' }}>
                     {showButton && (
@@ -93,10 +110,10 @@ const TextArea = ({ text, handleChange }) => {
                             onChange={handleChange}
                             modules={modules}
                             formats={formats}
-                            onFocus={handleFocus}
-                            onBlur={handleBlur}
+                            // onFocus={handleFocus}
+                            // onBlur={handleBlur}
                             // className = "style"
-                            style={{ height: 'auto', width: '500px', padding: '5px', resize: 'both', overflow: 'auto' }}
+                            style={{ height: 'auto', width: '500px', padding: '5px', resize: resize, overflow: 'auto' }}
                         />
                     )}
                     {!showToolbar && (
@@ -106,8 +123,8 @@ const TextArea = ({ text, handleChange }) => {
                             onChange={handleChange}
                             modules={{ toolbar: false }}
                             formats={formats}
-                            onFocus={handleFocus}
-                            onBlur={handleBlur}
+                            //onFocus={handleFocus}
+                            // onBlur={handleBlur}
                             style={{ height: 'auto', width: '500px', padding: '5px', resize: resize, overflow: 'auto' }}
                         />
                     )}

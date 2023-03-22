@@ -11,15 +11,22 @@ import html2canvas from "html2canvas"
 const Home = () => {
 
     const pdfRef = useRef(null)
+
+    // Global state variable which checks whether the button for generate pdf has been clicked
     const [pdfEvent, setPdfEvent] = useState(false)
 
+    // function to hide toolbars of Reactquill
     const hideToolbar = () => {
         setPdfEvent(true)
     }
 
+    //function to generatepdf when generate pdf button is clicked
+    // a snapshot of the page is generated
     const generatePDF = async () => {
         try {
+            // toolbar should hide because we dont want toolbar to show up in pdf
             hideToolbar()
+            // wait for sometime before pdf is generated so that the toolbars and toogle toolbar buttons are hidden
             await new Promise(resolve => setTimeout(resolve, 700))
             const pdf = new jsPDF("p", "mm", "a4");
             const canvas = await html2canvas(pdfRef.current, { scale: 8 });
@@ -39,7 +46,6 @@ const Home = () => {
                     <p>You can edit, resize and drag the boxes to make a customized resume.</p>
                 </div>
                 <div ref={pdfRef}
-                    //     className='resumeContainer'
                     style={{ boxShadow: "0px 0px 10px #888888", padding: "20px", height: "600px", overflow: 'scroll' }}
                 >
                     <Profile />

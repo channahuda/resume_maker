@@ -3,7 +3,7 @@ import './Home.css'
 import TextArea from './TextArea'
 import 'react-quill/dist/quill.snow.css'
 
-
+// A demo for the user to enter their academic qualifications
 const Education = () => {
     const [text, setText] = useState(`
     <p style="font-weight: bold">Education</p>

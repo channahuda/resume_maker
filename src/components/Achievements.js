@@ -3,7 +3,10 @@ import './Home.css'
 import TextArea from './TextArea';
 import 'react-quill/dist/quill.snow.css';
 
-const Education = () => {
+// A demo for the user to enter their achievements and skills. Shows the users that they can also add skills
+// i.e. add multiple headings inside a single textbox
+
+const Achievements = () => {
     const [text, setText] = useState('<p style="font-weight: bold;">Achievements</p><br><p style="font-weight: bold;">Skills</p>');
 
 
@@ -19,4 +22,4 @@ const Education = () => {
     );
 };
 
-export default Education;
+export default Achievements;
